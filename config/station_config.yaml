@@ -1,0 +1,79 @@
+# =============================================================================
+# RPLIDAR A1 Test Station Configuration
+# =============================================================================
+# This file contains hardware addresses and station-specific settings.
+#
+# WHY USE YAML CONFIG FILES?
+# 1. Separation of concerns: Settings live outside of code
+# 2. Multiple stations: Same code, different configs per station
+# 3. Easy updates: Technicians can modify without coding knowledge
+# 4. Version control: Track setting changes over time
+# =============================================================================
+
+#------------------------------------------------------------------------------
+# Station Identification
+#------------------------------------------------------------------------------
+station:
+  id: "LIDAR_TEST_01"
+  location: "Redwood Lab"
+  operator: "default"
+
+# -----------------------------------------------------------------------------
+# RPLIDAR Device Settings
+# -----------------------------------------------------------------------------
+rplidar:
+  # Serial port - CHANGE THIS FOR YOUR SYSTEM
+  # Linux/Jetson: /dev/ttyUSB0
+  # Mac: /dev/tty.usbserial-0001 (check with: ls /dev/tty.*)
+  port: "/dev/ttyUSB0"
+  baudrate: 115200
+  timeout_sec: 2.0
+  model: "A1M8"
+
+# -----------------------------------------------------------------------------
+# Motor Control
+# -----------------------------------------------------------------------------
+motor:
+  default_pwm: 660
+  min_pwm: 0
+  max_pwm: 1023
+  stabilization_time_sec: 2.0
+
+# -----------------------------------------------------------------------------
+# Logging
+# -----------------------------------------------------------------------------
+logging:
+  level: "INFO"
+  file: "logs/test_station.log"
+  console: true
+
+# -----------------------------------------------------------------------------
+# Data Output
+# -----------------------------------------------------------------------------
+data_output:
+  results_dir: "results"
+  format: "csv"
+  timestamp_format: "%Y%m%d_%H%M%S"
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

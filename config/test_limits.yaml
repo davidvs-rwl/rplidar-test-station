@@ -1,0 +1,97 @@
+# =============================================================================
+# Test Limits Configuration for RPLIDAR A1
+# =============================================================================
+# Pass/fail thresholds based on RPLIDAR A1M8 datasheet specifications:
+# - Range: 0.15m - 12m
+# - Angular Resolution: <= 1 degree
+# - Sample Rate: >= 2000 Hz
+# - Scan Rate: 5.5 Hz typical
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Device Info Verification
+# -----------------------------------------------------------------------------
+device_info:
+  expected_model: "A1M8"
+  firmware_version_min: "1.0.0"
+
+# -----------------------------------------------------------------------------
+# Scan Rate Test
+# -----------------------------------------------------------------------------
+scan_rate_test:
+  description: "Verify scan motor rotation frequency"
+  min_hz: 5.0
+  max_hz: 10.0
+  nominal_hz: 5.5
+  tolerance_percent: 10
+  samples_required: 10
+
+# -----------------------------------------------------------------------------
+# Sample Rate Test
+# -----------------------------------------------------------------------------
+sample_rate_test:
+  description: "Verify measurement sample frequency"
+  min_samples_per_sec: 2000
+  samples_to_collect: 5000
+  measurement_duration_sec: 3
+
+# -----------------------------------------------------------------------------
+# Range Accuracy Test
+# -----------------------------------------------------------------------------
+range_accuracy_test:
+  description: "Verify distance measurement accuracy"
+  accuracy_bands:
+    - range: [150, 500]
+      tolerance_mm: 5
+      tolerance_percent: null
+    - range: [500, 1500]
+      tolerance_mm: null
+      tolerance_percent: 1.0
+    - range: [1500, 6000]
+      tolerance_mm: null
+      tolerance_percent: 2.0
+    - range: [6000, 12000]
+      tolerance_mm: null
+      tolerance_percent: 3.5
+  samples_per_distance: 100
+  max_std_dev_mm: 10
+
+# -----------------------------------------------------------------------------
+# Angular Resolution Test
+# -----------------------------------------------------------------------------
+angular_resolution_test:
+  description: "Verify angular measurement density"
+  max_resolution_deg: 1.0
+  min_points_per_scan: 360
+
+# -----------------------------------------------------------------------------
+# Signal Quality Test
+# -----------------------------------------------------------------------------
+signal_quality_test:
+  description: "Verify signal strength and reliability"
+  min_quality: 10
+  min_valid_point_percentage: 80.0
+
+# -----------------------------------------------------------------------------
+# Motor Control Test
+# -----------------------------------------------------------------------------
+motor_control_test:
+  description: "Verify motor startup and stability"
+  startup_time_max_sec: 2.0
+  speed_stability_tolerance_percent: 5.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
