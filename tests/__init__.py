@@ -8,6 +8,7 @@ and implements setup(), execute(), and teardown() methods.
 from .base_test import BaseTest, TestResult, TestReport, TestStatus
 from .scan_rate_test import ScanRateTest
 from .signal_quality_test import SignalQualityTest
+from .angular_resolution_test import AngularResolutionTest
 
 __all__ = [
     "BaseTest",
@@ -16,4 +17,5 @@ __all__ = [
     "TestStatus",
     "ScanRateTest",
     "SignalQualityTest",
+    "AngularResolutionTest",
 ]
