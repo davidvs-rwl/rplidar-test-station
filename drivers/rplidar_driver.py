@@ -264,20 +264,20 @@ class RPLidarDriver:
     # =========================================================================
     
     def stop_motor(self) -> None:
-        """Stop the scan motor by setting DTR low."""
+        """Stop the scan motor by setting DTR high."""
         if self._serial is not None:
-            self._serial.dtr = False
+            self._serial.dtr = True
         logger.info("Motor stopped")
     
     def start_motor(self, pwm: int = 660) -> None:
         """
-        Start the scan motor by setting DTR high.
+        Start the scan motor by setting DTR low.
         
         Args:
             pwm: Ignored for A1 (kept for API compatibility)
         """
         if self._serial is not None:
-            self._serial.dtr = True
+            self._serial.dtr = False
         logger.info("Motor started")
     
     def set_motor_pwm(self, pwm: int) -> None:
