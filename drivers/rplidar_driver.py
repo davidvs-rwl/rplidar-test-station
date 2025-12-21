@@ -264,22 +264,33 @@ class RPLidarDriver:
     # =========================================================================
     
     def stop_motor(self) -> None:
-        """Stop the scan motor."""
-        self.set_motor_pwm(0)
+        """Stop the scan motor by setting DTR low."""
+        if self._serial is not None:
+            self._serial.dtr = False
         logger.info("Motor stopped")
     
     def start_motor(self, pwm: int = 660) -> None:
-        """Start the scan motor with specified PWM."""
-        self.set_motor_pwm(pwm)
-        logger.info(f"Motor started with PWM={pwm}")
+        """
+        Start the scan motor by setting DTR high.
+        
+        Args:
+            pwm: Ignored for A1 (kept for API compatibility)
+        """
+        if self._serial is not None:
+            self._serial.dtr = True
+        logger.info("Motor started")
     
     def set_motor_pwm(self, pwm: int) -> None:
-        """Set motor PWM duty cycle (0-1023)."""
-        if not 0 <= pwm <= 1023:
-            raise ValueError(f"PWM must be 0-1023, got {pwm}")
+        """
+        Set motor PWM - for A1, this just starts/stops motor.
         
-        payload = struct.pack("<H", pwm)
-        self._send_command(CMD_SET_PWM, payload)
+        Args:
+            pwm: PWM value (0 = stop, >0 = start)
+        """
+        if pwm == 0:
+            self.stop_motor()
+        else:
+            self.start_motor()
     
     # =========================================================================
     # Scanning
