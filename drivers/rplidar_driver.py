@@ -139,7 +139,6 @@ class RPLidarDriver:
                 port=self.port,
                 baudrate=self.baudrate,
                 timeout=self.timeout,
-                dtrdsr=False
             )
             self._serial.reset_input_buffer()
             self._serial.reset_output_buffer()
