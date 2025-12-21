@@ -1,0 +1,12 @@
+# Configuration
+PyYAML>=6.0
+
+# Serial Communication
+pyserial>=3.5
+
+# Data Analysis
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Testing
+pytest>=7.3.0
