@@ -22,6 +22,7 @@ from utils.config_loader import Config
 from drivers.rplidar_driver import RPLidarDriver
 from tests.base_test import BaseTest, TestReport, TestStatus
 from tests.scan_rate_test import ScanRateTest
+from tests.signal_quality_test import SignalQualityTest
 
 
 # =============================================================================
@@ -31,6 +32,7 @@ from tests.scan_rate_test import ScanRateTest
 
 AVAILABLE_TESTS: Dict[str, Type[BaseTest]] = {
     "scan_rate": ScanRateTest,
+    "signal_quality": SignalQualityTest,
     # "range_accuracy": RangeAccuracyTest,  # Future
     # "angular_resolution": AngularResolutionTest,  # Future
 }
